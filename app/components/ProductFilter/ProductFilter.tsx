@@ -1,15 +1,22 @@
-import { GoldFilled } from '@ant-design/icons'
+import { CloseCircleOutlined, GoldFilled } from '@ant-design/icons'
 import { Button, Card, Checkbox, Flex, Image, Select, Slider, SliderSingleProps } from 'antd'
 import React, { useEffect, useState } from 'react'
 import './ProductFilter.scss'
+import FiltersList from './FiltersList'
+import { queryBuilder } from '@/app/utils/queryBuilder'
+import { useRouter } from 'next/router'
 
 const ProductFilter = () => {
+    const router = useRouter()
+    const searchParams:any = {}
+    const name = searchParams.get('name')
     const defaultFilter:any = {
         price:[0,1000000],
         weight:[0,30],
         metal:[],
         sortBy:null
     }
+    const filters:any = []
     const [filterData, setFilterData] = useState(defaultFilter)
     const formatter: NonNullable<SliderSingleProps['tooltip']>['formatter'] = (value) => `Rs. ${value}`;
     const formatter2: NonNullable<SliderSingleProps['tooltip']>['formatter'] = (value) => `${value} gm`;
@@ -43,17 +50,35 @@ const ProductFilter = () => {
     }
 
     useEffect(()=> {
+        const queries:any = name && name !== "" ? [{name:"name", value:name}]:[]
         if (JSON.stringify(filterData) !== JSON.stringify(defaultFilter)) {
-            
-        }
-console.log(filterData, "filters")
+            Object.keys(filterData)?.map((k)=>{
+                if (JSON.stringify(filterData[k]) != JSON.stringify(defaultFilter[k])) {
+                    filters.push({name:k,value:filterData[k]})
+                }
+                else {
+                    filters.filter((f:any)=> f.name !== k)
+                }
+            })
+        } 
+        const updated = queries?.concat(filters)
+        const queryValue = queryBuilder({data:updated})
+        router.replace(`/products${queryValue}`)
     },[filterData])
     return (
-        <div>
-            <div className='!m-5 !mb-2'>
-            Filters <Button onClick={clearFilter}>Clear all</Button>
+        <div className='m-5'>
+            <div className='w-full !my-3'>
+                <FiltersList filters={filters} clearFilter={clearFilter} />
             </div>
-            <Card className='w-full !m-5 !mt-10 product-filter' title="Filter Products">
+            <Card className='w-full product-filter' 
+            title={
+                filters.length === 0 ?
+                    "Filter Products" :
+                <Flex justify='space-between'>
+                    <span>Filter Products ({filters.length})</span>
+                    <Button iconPosition='end' className='button danger !px-2 !py-1 !text-xs' icon={<CloseCircleOutlined />} onClick={clearFilter}>Clear all</Button>
+            </Flex>
+        }>
             <Flex vertical gap={20}>
                 <Select onChange={(e:any)=>setParams("sortBy",e)} placeholder="Sort By" options={[
                         {label:"Latest",value:'date'},

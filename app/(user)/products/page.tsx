@@ -25,17 +25,17 @@ export default function Home() {
                                 title: <Link href={"/"}>Home</Link>,
                             },
                             {
-                                title: searchName ?  <span className="capitalize">Products - {searchName}</span> : "Products",
+                                title: searchName ? <span className="capitalize">Products - {searchName}</span> : "Products",
                             }
                         ]}
                     />
                 </Flex>
             </Card>
-            <Flex gap={20} className="product-list">
-                <div className="w-full md:w-1/4">
-                <Affix offsetTop={100}>
-                    <ProductFilter />
-            </Affix>
+            <Flex className="product-list">
+                <div className="w-full md:w-[30%]">
+                    <Affix offsetTop={100} className="w-full">
+                        <ProductFilter />
+                    </Affix>
                 </div>
                 <div className="w-full md:w-3/4">
                     <Row gutter={[20, 20]} className="p-10">
