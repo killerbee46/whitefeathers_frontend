@@ -1,0 +1,22 @@
+.ant-input-search{
+    &.custom-search-bar{
+        border: 0.5px solid #3892C6;
+        border-radius: 8px;
+        input{
+            border: none;
+            &:focus{
+            border: none;
+        }
+    }
+        &:focus{
+            input{
+            border: none;
+        }
+        }
+
+        .ant-btn{
+            border: none;
+            color: #3892C6 !important;
+        }
+    }
+}
