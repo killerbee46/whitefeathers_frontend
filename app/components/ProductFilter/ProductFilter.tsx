@@ -3,12 +3,12 @@ import { Button, Card, Checkbox, Flex, Image, Select, Slider, SliderSingleProps 
 import React, { useEffect, useState } from 'react'
 import './ProductFilter.scss'
 import FiltersList from './FiltersList'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { queryBuilder } from '@/app/utils/queryBuilder'
-import { useRouter } from 'next/router'
 
 const ProductFilter = () => {
     const router = useRouter()
-    const searchParams:any = {}
+    const searchParams = useSearchParams()
     const name = searchParams.get('name')
     const defaultFilter:any = {
         price:[0,1000000],

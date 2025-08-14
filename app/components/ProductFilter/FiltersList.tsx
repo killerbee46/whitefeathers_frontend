@@ -1,10 +1,10 @@
 import { CloseCircleOutlined } from '@ant-design/icons'
 import { Button, Flex, Tag } from 'antd'
-import useSearchParams from 'next/router'
+import { useSearchParams } from 'next/navigation'
 import React from 'react'
 
 const FiltersList = ({ filters, clearFilter }: any) => {
-    const query:any = {}
+    const query = useSearchParams()
     const metal = query.getAll('metal')
     const price = [query.get('minPrice'), query.get('maxPrice')]
     const weight = [query.get('minWeight'), query.get('maxWeight')]
