@@ -38,7 +38,7 @@ const UserLayout = ({ children }: any) => {
                     <Navbar logo="https://whitefeathersjewellery.com/assets/v2/images/wflogo.png" smallLogo="/wf-logo-small.svg" menus={menus} auth searchable />
                 </div>
             </header>
-            <div className='max-w-[100vw] overflow-hidden'>
+            <div className='max-w-[100vw] min-h-[90vh] overflow-hidden relative'>
                 {children}
             </div>
             <footer>

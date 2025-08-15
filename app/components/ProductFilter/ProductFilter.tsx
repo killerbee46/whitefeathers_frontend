@@ -49,6 +49,10 @@ const ProductFilter = () => {
         setFilterData(defaultFilter)
     }
 
+    const clearEachFilter = (key:string) => {
+        setFilterData({...filterData,[key]:defaultFilter[key]})
+    }
+
     useEffect(()=> {
         const queries:any = name && name !== "" ? [{name:"name", value:name}]:[]
         if (JSON.stringify(filterData) !== JSON.stringify(defaultFilter)) {
@@ -66,11 +70,11 @@ const ProductFilter = () => {
         router.replace(`/products${queryValue}`)
     },[filterData])
     return (
-        <div className='m-5'>
-            <div className='w-full !my-3'>
-                <FiltersList filters={filters} clearFilter={clearFilter} />
+        <div className='!m-5 !mt-5'>
+            <div className='w-full !mb-3'>
+                <FiltersList clearFilter={clearFilter} clearEachFilter={clearEachFilter} />
             </div>
-            <Card className='w-full product-filter' 
+            <Card className='!w-full product-filter' 
             title={
                 filters.length === 0 ?
                     "Filter Products" :
@@ -79,8 +83,8 @@ const ProductFilter = () => {
                     <Button iconPosition='end' className='button danger !px-2 !py-1 !text-xs' icon={<CloseCircleOutlined />} onClick={clearFilter}>Clear all</Button>
             </Flex>
         }>
-            <Flex vertical gap={20}>
-                <Select onChange={(e:any)=>setParams("sortBy",e)} placeholder="Sort By" options={[
+            <Flex vertical gap={10}>
+                <Select value={filterData?.sortBy} onChange={(e:any)=>setParams("sortBy",e)} placeholder="Sort By" options={[
                         {label:"Latest",value:'date'},
                         {label:"Price High to Low",value:'price-htl'},
                         {label:"Price Low to High",value:'price-lth'},
@@ -89,13 +93,13 @@ const ProductFilter = () => {
                 <div>
                     <label>Select Price Range</label>
                     <div className='px-10 py-3'>
-                        <Slider onChange={(e:any)=>setParams("price",e)} tooltip={{ formatter }} min={0} max={1000000} range={{ draggableTrack: true }} defaultValue={[0, 1000000]} />
+                        <Slider onChange={(e:any)=>setParams("price",e)} tooltip={{ formatter }} min={0} max={1000000} range={{ draggableTrack: true }} value={filterData?.price} />
                     </div>
                 </div>
                 <div>
                     <label>Select Weight Range</label>
                     <div className='px-10 py-3'>
-                        <Slider onChange={(e:any)=>setParams("weight",e)} tooltip={{ formatter: formatter2 }} min={0} max={30} range={{ draggableTrack: true }} defaultValue={[0, 30]} />
+                        <Slider onChange={(e:any)=>setParams("weight",e)} tooltip={{ formatter: formatter2 }} min={0} max={30} range={{ draggableTrack: true }} value={filterData?.weight} />
                     </div>
                 </div>
                 <div>

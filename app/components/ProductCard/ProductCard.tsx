@@ -17,7 +17,7 @@ const ProductCard = () => {
         <Link href={`/products/1`}>
             {contextHolder}
             {/* <Badge.Ribbon text="Tags"> */}
-            <Card hoverable className='max-w-[500px] h-full overflow-hidden relative' cover={<Image className='w-full aspect-[5/4]' preview={false} src={dI} alt='p-i' />}>
+            <Card hoverable className='max-w-[500px] !bg-[#3892C61A] h-full overflow-hidden relative' cover={<Image className='w-full aspect-[5/4]' preview={false} src={dI} alt='p-i' />}>
                 <div className='!-m-[14px]'>
                     <Flex justify='space-between' align='center'>
                         <div className='!text-base font-semibold italic'>
