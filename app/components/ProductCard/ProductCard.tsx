@@ -2,6 +2,7 @@ import { HeartFilled, HeartOutlined, VideoCameraOutlined } from '@ant-design/ico
 import { Badge, Button, Card, Flex, Image, message } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import ConvertedPrice from '../ConvertedPrice/ConvertedPrice'
 
 const ProductCard = () => {
     const dI = "https://imgs.search.brave.com/327AqEJKwIRKWxw5nqpQtBhw2YGCYB--mVh5oPLcJME/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1wc2QvcHJv/ZHVjdC1kaXNwbGF5/LTNkLXBvZGl1bS1i/YWNrZ3JvdW5kXzQ3/OTg3LTExMzA3Lmpw/Zz9zZW10PWFpc19o/eWJyaWQmdz03NDAm/cT04MA"
@@ -21,8 +22,9 @@ const ProductCard = () => {
                 <div className='!-m-[14px]'>
                     <Flex justify='space-between' align='center'>
                         <div className='!text-base font-semibold italic'>
-                            <div>USD 200</div>
-                            <div className='text-crossed text-base text-slate-500 line-through text-sm font-normal'>USD 250</div>
+                            <ConvertedPrice pri={25000} dis={200} />
+                            {/* <div>USD 200</div>
+                            <div className='text-crossed text-base text-slate-500 line-through text-sm font-normal'>USD 250</div> */}
                         </div>
                         <Button className='button success !px-2 !py-1 !text-xs' icon={<VideoCameraOutlined />}>Live Call</Button>
                     </Flex>
