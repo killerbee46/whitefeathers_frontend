@@ -32,16 +32,14 @@ export default function Home() {
                 </Flex>
             </Card>
             <Flex className="product-list">
-                <div className="w-full md:w-[30%]">
-                    <Affix offsetTop={100} className="w-full">
-                        <ProductFilter />
-                    </Affix>
-                </div>
-                <div className="w-full md:w-3/4">
+                <Affix offsetTop={100} className="w-full hidden md:block md:w-[30%]">
+                    <ProductFilter />
+                </Affix>
+                <div className="w-full w-full md:w-3/4">
                     <Row gutter={[20, 20]} className="p-10">
                         {
                             Array(10)?.fill(null)?.map(() => {
-                                return <Col xs={24} sm={12} md={8} lg={8} xxl={6}>
+                                return <Col xs={24} sm={12} md={12} lg={8} xxl={8}>
                                     <ProductCard />
                                 </Col>
                             })

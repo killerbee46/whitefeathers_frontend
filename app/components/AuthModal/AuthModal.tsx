@@ -1,7 +1,13 @@
 import { Button, Divider, Flex, Modal } from 'antd'
 import React, { useState } from 'react'
-import LoginForm from '../Forms/LoginForm'
-import RegisterForm from '../Forms/RegisterForm'
+import dynamic from 'next/dynamic';
+const LoginForm = dynamic(() => import('../Forms/LoginForm'), {
+  ssr: false,
+});
+const RegisterForm = dynamic(() => import('../Forms/RegisterForm'), {
+  ssr: false,
+});
+
 
 const AuthModal = () => {
     const [modalState,setModalState] = useState({

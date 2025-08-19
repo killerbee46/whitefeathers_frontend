@@ -17,6 +17,9 @@ export default function Home() {
       <Link href={'/products'}>
       <Button>Go to Products Page</Button>
       </Link>
+      <Link href={'/price-calculator'}>
+      <Button>Calculate Product Price</Button>
+      </Link>
       </div>
     </UserLayout>
   );

@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@ant-design/v5-patch-for-react-19';
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import ReactQueryProvider from "./utils/ReactQueryProvider";
 
 export const metadata: Metadata = {
   title: "White Feather's Jewellery",
@@ -19,7 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <AntdRegistry>{children}</AntdRegistry>
+        <ReactQueryProvider>
+          <AntdRegistry>{children}</AntdRegistry>
+        </ReactQueryProvider>
+        
       </body>
     </html>
   );

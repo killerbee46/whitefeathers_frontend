@@ -1,8 +1,10 @@
+'use client'
 import { Button, Col, Flex, Form, Input, Row, Space, Typography } from 'antd'
 import { useForm } from 'antd/es/form/Form'
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/_form.scss'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 type LoginTypes = {
     email: String;
@@ -15,14 +17,28 @@ type LoginDataTypes = {
 }
 
 const LoginForm = ({ closeForm, switchForm=(e)=>console.log("error") }: LoginDataTypes) => {
-    const [form] = useForm()
+     const [form] = useForm()
+  const router = useRouter()
+  const [error, setError] = useState('')
+//   const {mutate,isPending:loading} = useMutation({
+//     mutationFn:requestLogin,
+//     onSuccess: async(data, variables) => {
+//     //   await storeLogin(data)
+//       router.replace(window.location.pathname)
+//     },
+//     onError: (error:any) => {
+//       // An error happened!
+//         setError(error?.response?.data?.message+ " !")
+//     },
+//   })
 
-    const onSubmit = (values: LoginTypes) => {
-        console.log(values)
-    }
+  const onFinish = (values:any) => {
+    console.log(values, "login values")
+// mutate(values)
+  }
     return (
         <>
-            <Form layout='vertical' className='wf_form !p-2 !px-5'>
+            <Form form={form} onFinish={onFinish} layout='vertical' className='wf_form !p-2 !px-5'>
                 <Form.Item name={'email'} label="Email">
                     <Input type='email' />
                 </Form.Item>
@@ -38,10 +54,11 @@ const LoginForm = ({ closeForm, switchForm=(e)=>console.log("error") }: LoginDat
                             <Typography.Paragraph onClick={()=>switchForm("register")} className='text primary cursor-pointer'>Don't Have an Account ?</Typography.Paragraph>
                         </Space>
                         </Col>
+                        <Col span={24}></Col>
                         <Col xs={24} md={12}>
                         <Flex gap={20} className='w-full justify-end'>
                             <Button onClick={closeForm} className='button danger'>Cancel</Button>
-                            <Button className='button success'>Login</Button>
+                            <Button htmlType='submit' className='button success'>Login</Button>
                         </Flex>
                         </Col>
                     </Row>
