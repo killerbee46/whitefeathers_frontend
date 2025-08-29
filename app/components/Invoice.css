@@ -1,0 +1,128 @@
+.invoice-box {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.invoice-box header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.invoice-box .logo {
+  max-height: 45px;
+  width: auto;
+}
+
+.invoice-box .header-info {
+  text-align: right;
+}
+
+.invoice-box .header-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.invoice-box .address {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.invoice-box .address > div {
+  flex: 1;
+}
+
+.invoice-box h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.invoice-box table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.invoice-box table th {
+  background-color: #e9edf3;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.invoice-box table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.invoice-box .summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.invoice-box .right {
+  text-align: right;
+}
+
+.invoice-box .right p {
+  margin: 5px 0;
+}
+
+.invoice-box .note {
+  padding: 10px;
+  background-color: #eef6ff;
+  border-left:  4px solid #0a76d1;
+  margin-bottom: 30px;
+}
+
+.invoice-box footer {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #666;
+}
+
+.invoice-box footer a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+
+.print-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.print-btn button {
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 16px;
+
+
+}
+
+  @media print {
+          .print-btn {
+            display: none;
+          }
+        }
+  .invoice-box {
+    box-shadow: none;
+    padding: 0;
+  }
+
