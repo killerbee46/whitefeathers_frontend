@@ -13,13 +13,6 @@
             background: #3892C6;
             color: white;
             border: 2px solid #3892C6;
-        }
-
-        &.rounded {
-            border-radius: 8px;
-        }
-
-        &.primary {
             &:hover {
                 background: white;
                 color: #3892C6;
@@ -27,13 +20,14 @@
             }
         }
 
+        &.rounded {
+            border-radius: 8px;
+        }
+
         &.secondary {
             background: white;
             color: #3892C6;
             border: 2px solid #3892C6;
-        }
-
-        &.secondary {
             &:hover {
                 background: white;
                 color: black;
@@ -45,9 +39,6 @@
             background: rgb(11, 128, 11);
             color: white;
             border: 2px solid rgb(11, 128, 11);
-        }
-
-        &.success {
             &:hover {
                 background: white;
                 color: rgb(11, 128, 11);
@@ -59,9 +50,6 @@
             background: crimson;
             color: white;
             border: 2px solid crimson;
-        }
-
-        &.danger {
             &:hover {
                 background: white;
                 color: crimson;

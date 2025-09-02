@@ -1,12 +1,14 @@
 import { HeartFilled, HeartOutlined, VideoCameraOutlined } from '@ant-design/icons'
-import { Badge, Button, Card, Flex, Image, message } from 'antd'
+import { Badge, Button, Card, Flex, message } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import ConvertedPrice from '../ConvertedPrice/ConvertedPrice'
+import { getImage } from '@/app/utils/getImage'
+import Image from 'next/image'
 
-const ProductCard = () => {
-    const dI = "https://imgs.search.brave.com/327AqEJKwIRKWxw5nqpQtBhw2YGCYB--mVh5oPLcJME/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1wc2QvcHJv/ZHVjdC1kaXNwbGF5/LTNkLXBvZGl1bS1i/YWNrZ3JvdW5kXzQ3/OTg3LTExMzA3Lmpw/Zz9zZW10PWFpc19o/eWJyaWQmdz03NDAm/cT04MA"
-    const [isWish, setIsWish] = useState(false)
+const ProductCard = ({product}:any) => {
+    const {id, title, wishlist, cart, s_path, dynamic_price, discount} = product
+    const [isWish, setIsWish] = useState(wishlist && wishlist === 1)
     const [messageApi, contextHolder] = message.useMessage();
 
     const switchWish = (e: any) => {
@@ -15,20 +17,22 @@ const ProductCard = () => {
         !isWish ? messageApi.success("Added to wishlist!") : messageApi.error("Removed from wishlist!")
     }
     return (
-        <Link href={`/products/1`}>
+        <Link href={`/products/${id}`}>
             {contextHolder}
             {/* <Badge.Ribbon text="Tags"> */}
-            <Card hoverable className='max-w-[500px] !bg-[#3892C61A] h-full overflow-hidden relative' cover={<Image className='w-full aspect-[5/4]' preview={false} src={dI} alt='p-i' />}>
+            <Card hoverable className='max-w-[500px] !bg-[#3892C61A] h-full overflow-hidden relative' cover={<Image placeholder='blur' blurDataURL='/image-loading.gif' width={250} height={200} className='!w-full aspect-[5/4]' src={getImage(s_path)||"/no-image.webp"} alt='p-i' />}>
                 <div className='!-m-[14px]'>
                     <Flex justify='space-between' align='center'>
                         <div className='!text-base font-semibold italic'>
-                            <ConvertedPrice pri={25000} dis={200} />
+                            <ConvertedPrice pri={dynamic_price} dis={discount} />
                             {/* <div>USD 200</div>
                             <div className='text-crossed text-base text-slate-500 line-through text-sm font-normal'>USD 250</div> */}
                         </div>
-                        <Button className='button success !px-2 !py-1 !text-xs' icon={<VideoCameraOutlined />}>Live Call</Button>
+                        <Button onClick={(e)=>{ 
+                            e.preventDefault()
+                            alert("hello")}} className='button success !px-2 !py-1 !text-xs relative z-50' icon={<VideoCameraOutlined />}>Live Call</Button>
                     </Flex>
-                    <div title='Product name must not exceed 2 line it should not at all' className='my-3 px-1 line-clamp-2 leading-5'>Product name must not exceed 2 line it should not at all</div>
+                    <div title='Product name must not exceed 2 line it should not at all' className='my-3 px-1 line-clamp-2 leading-5'>{title}</div>
                 </div>
                 <div className='absolute top-5 right-5 z-10 active:scale-125'>
                     {

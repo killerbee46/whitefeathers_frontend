@@ -1,3 +1,4 @@
+'use client'
 import { Button, Col, Flex, Form, Input, Row, Space, Typography } from 'antd'
 import { useForm } from 'antd/es/form/Form'
 import React from 'react'
@@ -10,10 +11,10 @@ type RegisterTypes = {
 
 type RegisterDataTypes = {
     closeForm?: () => void;
-    switchForm?: (e:string) => void;
+    switchForm?: (e: string) => void;
 }
 
-const RegisterForm = ({ closeForm, switchForm=(e)=>console.log("error") }: RegisterDataTypes) => {
+const RegisterForm = () => {
     const [form] = useForm()
 
     const onSubmit = (values: RegisterTypes) => {
@@ -42,17 +43,10 @@ const RegisterForm = ({ closeForm, switchForm=(e)=>console.log("error") }: Regis
                 </Form.Item>
 
                 <Form.Item>
-                    <Row gutter={20} justify='space-between' className='!mt-4 !-mb-4'>
-                        <Col md={12} xs={24}>
-                            <Typography.Paragraph onClick={()=>switchForm("login")} className='text primary cursor-pointer'>Already Have an Account ?</Typography.Paragraph>
-                        </Col>
-                        <Col md={12} xs={24}>
-                        <Flex gap={20} className='w-full justify-end'>
-                            <Button onClick={closeForm} className='button danger'>Cancel</Button>
-                            <Button className='button success'>Register</Button>
-                        </Flex>
-                        </Col>
-                    </Row>
+                    <Flex gap={20} justify='space-between' align='baseline' className='!mt-2'>
+                        <Typography.Link href='/auth/login' className='text primary cursor-pointer'>Have an Account?</Typography.Link>
+                        <Button className='button success'>Register</Button>
+                    </Flex>
                 </Form.Item>
             </Form>
         </>

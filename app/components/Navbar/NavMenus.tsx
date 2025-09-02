@@ -115,7 +115,7 @@ const NavMenus = ({ menus }: any) => {
 }
 
 export const MiniNavMenus = ({ menus }: any) => {
-    console.log(menus, "mini menu")
+    
     return (
         <Row justify={"start"} style={{ gap: 10, flexDirection: 'column' }} className="navMenu px-2">
             {menus?.map((d: any, i: number) => {

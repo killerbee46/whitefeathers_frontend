@@ -5,7 +5,7 @@ export const requestLogin = (data: any) => {
   return API({
     method: "POST",
     data: data,
-    url: "/login",
+    url: "/auth/login",
   });
 };
 
@@ -13,7 +13,7 @@ export const requestRegister = (data: any) => {
   return API({
     method: "POST",
     data: data,
-    url: "/register",
+    url: "/auth/register",
   });
 };
 

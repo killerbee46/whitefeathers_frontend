@@ -6,6 +6,7 @@ import UserLayout from "@/app/layouts/UserLayout";
 import ProductFilter from "@/app/components/ProductFilter/ProductFilter";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import InfiniteScrollComponent from "@/app/components/InfiniteScroll/InfiniteScroll";
 
 // export const metadata: Metadata = {
 //   title: "White Feather's Jewellery",
@@ -36,7 +37,8 @@ export default function Home() {
                     <ProductFilter />
                 </Affix>
                 <div className="w-full w-full md:w-3/4">
-                    <Row gutter={[20, 20]} className="p-10">
+<InfiniteScrollComponent />
+                    {/* <Row gutter={[20, 20]} className="p-10">
                         {
                             Array(10)?.fill(null)?.map(() => {
                                 return <Col xs={24} sm={12} md={12} lg={8} xxl={8}>
@@ -44,7 +46,7 @@ export default function Home() {
                                 </Col>
                             })
                         }
-                    </Row>
+                    </Row> */}
                 </div>
             </Flex>
 

@@ -18,12 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
+      <body>
         <ReactQueryProvider>
           <AntdRegistry>{children}</AntdRegistry>
         </ReactQueryProvider>
-        
       </body>
     </html>
   );

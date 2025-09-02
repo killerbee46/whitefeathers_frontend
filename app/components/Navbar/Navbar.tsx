@@ -9,10 +9,13 @@ import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import SearchBar from "../searchbar/SearchBar";
 import LoginHandler from "../LoginHandler/LoginHandler";
-import CurrencySwitch from "../CurrencySwitch/CurrencySwitch";
 import './Navbar.scss';
 import Logo from "../Logo/Logo";
 import NavMenus, { MiniNavMenus } from "./NavMenus";
+import dynamic from "next/dynamic";
+const CurrencySwitch = dynamic(() => import('../CurrencySwitch/CurrencySwitch'), {
+  ssr: false,
+});
 
 export const Navbar = ({
   menus,
@@ -23,8 +26,6 @@ export const Navbar = ({
   const menuSwitch = () => {
     setMenuOpen(!menuOpen);
   };
-  const defaultLogo =
-    "https://imgs.search.brave.com/mi-mEyLDdGWRrqQRi32s01uwZRgn-fsZm8FU16ZM1Dc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvaW50ZWwvc21h/bGwvaW50ZWxfUE5H/MjQucG5n";
   return (
     <>
       <Affix
@@ -59,7 +60,7 @@ export const Navbar = ({
             lg={0}
             className="flex justify-end lg:hidden"
           >
-            <div className="p-4 cursor-pointer pe-0" onClick={menuSwitch}>
+            <div className="p-4 cursor-pointer !pe-0" onClick={menuSwitch}>
               <MenuOutlined className="text-xl" />
             </div>
           </Col>
@@ -73,7 +74,7 @@ export const Navbar = ({
         className="menu-drawer"
         title={
           <Row justify={"space-between"} align={"middle"}>
-            <Col lg={0} md={0} sm={2} xs={3}>
+            <Col lg={0} md={1} sm={2} xs={3}>
               <Logo src={smallLogo} />
             </Col>
             <Col>

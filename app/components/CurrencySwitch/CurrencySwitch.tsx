@@ -1,11 +1,16 @@
 import { Button, Flex, Image, Select } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './CurrencySwitch.scss'
-import { myCurrency, setCurrency } from '@/app/utils/userCurrency'
+import useLocalStorage from 'use-local-storage'
+import { useRouter } from 'next/navigation'
 
 const CurrencySwitch = () => {
+    const router = useRouter()
+    const [value, setValue] = useLocalStorage('currency', 'npr')
 
-    const defaultImage = "https://imgs.search.brave.com/2H_DI7__yo5-CYBNVSOaE9LKpCow5x56eY9dEyeOOT0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGVzaWduZXZvLmNv/bS9yZXMvdGVtcGxh/dGVzL3RodW1iX3Nt/YWxsL2JsdWUtYW5k/LXdoaXRlLW51bWJl/ci1mb3VyLndlYnA"
+useEffect(()=> {
+    router.refresh()
+},[value])
 
     const options = [
         {
@@ -28,7 +33,7 @@ const CurrencySwitch = () => {
 
     return (
     <Button className='select-button'>
-        <Select onChange={(e)=> setCurrency(e)} suffixIcon={null} className='currency-selector' style={{ width: 90 }} defaultValue={myCurrency} options={options} />
+        <Select onChange={(e)=> setValue(e)} suffixIcon={null} className='currency-selector' style={{ width: 90 }} defaultValue={value} options={options} />
     </Button>    
     )
 }

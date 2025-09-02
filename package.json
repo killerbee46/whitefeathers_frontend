@@ -16,12 +16,15 @@
     "antd": "^5.26.7",
     "axios": "^1.11.0",
     "axios-cache-interceptor": "^1.8.0",
+    "js-cookie": "^3.0.5",
     "next": "15.4.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-slick": "^0.30.3",
     "sass": "^1.90.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "use-local-storage": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
