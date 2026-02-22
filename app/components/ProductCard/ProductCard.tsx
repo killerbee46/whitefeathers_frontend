@@ -7,7 +7,7 @@ import { getImage } from '@/app/utils/getImage'
 import Image from 'next/image'
 
 const ProductCard = ({product}:any) => {
-    const {id, title, wishlist, cart, s_path, dynamic_price, discount} = product
+    const {id, title, wishlist, cart, image:s_path, dynamic_price, discount} = product
     const [isWish, setIsWish] = useState(wishlist && wishlist === 1)
     const [messageApi, contextHolder] = message.useMessage();
 
